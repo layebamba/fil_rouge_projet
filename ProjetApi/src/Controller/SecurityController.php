@@ -7,6 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Serializer\SerializerInterface;
@@ -25,17 +26,28 @@ class SecurityController extends AbstractController
 {
    /**
     *@Route("/register",name="register",methods={"POST"})
+    *@IsGranted("ROLE_ADMIN")
     */
     public function register(Request $request,UserPasswordEncoderInterface $userPasswordEncoder,EntityManagerInterface $entityManager,SerializerInterface $serializer,ValidatorInterface $validator)
     {
         $values=json_decode($request->getContent());
-        if(isset($values->username,$values->password))
+        if(isset($values->username,$values->password,$values->nom,$values->prenom,$values->adresse,
+        $values->tel,$values->matricule,$values->status,$values->email))
         {
 
         $user=new User();
         $user->setUsername($values->username);
         $user->setPassword($userPasswordEncoder->encodePassword($user,$values->password));
-        $user->setRoles(['ROLE_SUPERUSER']);
+        $user->setRoles($user->getRoles());
+        $user->setNom($values->nom);
+        $user->setPrenom($values->prenom);
+        $user->setAdresse($values->adresse);
+        $user->setTel($values->tel);
+        $user->setMatricule($values->matricule);
+        $user->setStatus($values->status);
+        $user->setEmail($values->email);
+        $part=$this->getDoctrine()->getRepository(Partenaire::class)->find($values->idpartenaire);
+        $user->setIdPartenaire($$values->IdPartenaire);
         $errors=$validator->validate($user);
         if(count($errors)){
             $errors=$serializer->serialize($errors,'json');
@@ -70,3 +82,5 @@ class SecurityController extends AbstractController
         'roles'=>$user->getRoles()]);
     }
 }
+
+

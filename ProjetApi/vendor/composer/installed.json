@@ -2577,8 +2577,8 @@
     },
     {
         "name": "symfony/browser-kit",
-        "version": "v4.3.2",
-        "version_normalized": "4.3.2.0",
+        "version": "v4.3.3",
+        "version_normalized": "4.3.3.0",
         "source": {
             "type": "git",
             "url": "https://github.com/symfony/browser-kit.git",
@@ -2921,8 +2921,8 @@
     },
     {
         "name": "symfony/css-selector",
-        "version": "v4.3.2",
-        "version_normalized": "4.3.2.0",
+        "version": "v4.3.3",
+        "version_normalized": "4.3.3.0",
         "source": {
             "type": "git",
             "url": "https://github.com/symfony/css-selector.git",
@@ -2959,12 +2959,12 @@
         ],
         "authors": [
             {
-                "name": "Jean-François Simon",
-                "email": "jeanfrancois.simon@sensiolabs.com"
-            },
-            {
                 "name": "Fabien Potencier",
                 "email": "fabien@symfony.com"
+            },
+            {
+                "name": "Jean-François Simon",
+                "email": "jeanfrancois.simon@sensiolabs.com"
             },
             {
                 "name": "Symfony Community",

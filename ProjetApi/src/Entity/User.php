@@ -35,6 +35,46 @@ class User implements UserInterface
      */
     private $password;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $nom;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $prenom;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $adresse;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $tel;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $matricule;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $status;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $email;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Partenaire", inversedBy="users")
+     */
+    private $Partenaire;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -106,5 +146,101 @@ class User implements UserInterface
     {
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;
+    }
+
+    public function getNom(): ?string
+    {
+        return $this->nom;
+    }
+
+    public function setNom(string $nom): self
+    {
+        $this->nom = $nom;
+
+        return $this;
+    }
+
+    public function getPrenom(): ?string
+    {
+        return $this->prenom;
+    }
+
+    public function setPrenom(string $prenom): self
+    {
+        $this->prenom = $prenom;
+
+        return $this;
+    }
+
+    public function getAdresse(): ?string
+    {
+        return $this->adresse;
+    }
+
+    public function setAdresse(string $adresse): self
+    {
+        $this->adresse = $adresse;
+
+        return $this;
+    }
+
+    public function getTel(): ?int
+    {
+        return $this->tel;
+    }
+
+    public function setTel(int $tel): self
+    {
+        $this->tel = $tel;
+
+        return $this;
+    }
+
+    public function getMatricule(): ?string
+    {
+        return $this->matricule;
+    }
+
+    public function setMatricule(string $matricule): self
+    {
+        $this->matricule = $matricule;
+
+        return $this;
+    }
+
+    public function getStatus(): ?string
+    {
+        return $this->status;
+    }
+
+    public function setStatus(string $status): self
+    {
+        $this->status = $status;
+
+        return $this;
+    }
+
+    public function getEmail(): ?string
+    {
+        return $this->email;
+    }
+
+    public function setEmail(string $email): self
+    {
+        $this->email = $email;
+
+        return $this;
+    }
+
+    public function getPartenaire(): ?Partenaire
+    {
+        return $this->Partenaire;
+    }
+
+    public function setPartenaire(?Partenaire $Partenaire): self
+    {
+        $this->Partenaire = $Partenaire;
+
+        return $this;
     }
 }

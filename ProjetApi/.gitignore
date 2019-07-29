@@ -1,17 +1,17 @@
 
-# ###> symfony/framework-bundle ###
+# # ###> symfony/framework-bundle ###
 # /.env.local
 # /.env.local.php
 # /.env.*.local
 # /public/bundles/
-# /var/
+/var/
 # /vendor/
 # ###< symfony/framework-bundle ###
 
 # ###> symfony/web-server-bundle ###
-# /.web-server-pid
+ /.web-server-pid
 # ###< symfony/web-server-bundle ###
 
 # ###> lexik/jwt-authentication-bundle ###
-# /config/jwt/*.pem
+ /config/jwt/*.pem
 # ###< lexik/jwt-authentication-bundle ###
