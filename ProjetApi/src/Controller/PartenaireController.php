@@ -20,7 +20,6 @@ class PartenaireController extends AbstractController
 {
     /**
      * @Route("/partenaire", name="partenaire",methods={"POST"})
-     * @IsGranted("ROLE_SUPERUSER")
      */
     public function new(Request $request,EntityManagerInterface $entityManager,SerializerInterface $serializer)
     {

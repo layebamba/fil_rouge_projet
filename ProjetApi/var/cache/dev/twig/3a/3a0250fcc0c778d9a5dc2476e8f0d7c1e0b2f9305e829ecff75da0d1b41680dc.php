@@ -155,6 +155,6 @@ class __TwigTemplate_feec95ffaf6f4d6fd0842d5e2c3c7e2ec4408d9476d563ddafa681a56ac
         </tr>
     </tbody>
 </table>
-", "@Twig/Exception/traces_text.html.twig", "/home/laye/projet-fil-rouge-master/ProjetApi/vendor/symfony/twig-bundle/Resources/views/Exception/traces_text.html.twig");
+", "@Twig/Exception/traces_text.html.twig", "/home/thiam/kader/fil_rouge_projet/ProjetApi/vendor/symfony/twig-bundle/Resources/views/Exception/traces_text.html.twig");
     }
 }

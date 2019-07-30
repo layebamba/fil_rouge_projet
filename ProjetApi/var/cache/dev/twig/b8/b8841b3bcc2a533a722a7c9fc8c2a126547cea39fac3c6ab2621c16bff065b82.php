@@ -198,6 +198,6 @@ class __TwigTemplate_552fd9339a464f9e2895a348aef28360419b518ad375e4cc8ab83f7e922
         })|raw }}
     </div>
 {% endif %}
-", "@Twig/Exception/trace.html.twig", "/home/laye/projet-fil-rouge-master/ProjetApi/vendor/symfony/twig-bundle/Resources/views/Exception/trace.html.twig");
+", "@Twig/Exception/trace.html.twig", "/home/thiam/kader/fil_rouge_projet/ProjetApi/vendor/symfony/twig-bundle/Resources/views/Exception/trace.html.twig");
     }
 }

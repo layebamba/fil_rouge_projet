@@ -25,11 +25,10 @@ class TransactionController extends AbstractController
 
     /**
      * @Route("/transaction", name="transaction")
-     * @IsGranted("ROLE_SUPERUSER")
      * 
      */
-    public function trans(Request $request,SerializerInterface  $serializer ,
-    ValidatorInterface $validator,SerializerInterface $Serializer, EntityManagerInterface $entityManager)
+    public function trans(Request $request,
+    ValidatorInterface $validator,SerializerInterface $serializer, EntityManagerInterface $entityManager)
     {
      $values=json_decode($request->getContent());
      if(isset($values->partenaire_id,$values->somme,$values->datetransaction))
@@ -41,7 +40,7 @@ class TransactionController extends AbstractController
          $transaction->setDatetransaction(new\DateTime());
         $errors=$validator->validate($transaction);
         if(count($errors)){
-            $errors=$Serializer->serialize($errors,'json');
+            $errors=$serializer->serialize($errors,'json');
             return new Response($errors,500,['Content-Type'=>'Application/json']);
 
         }
