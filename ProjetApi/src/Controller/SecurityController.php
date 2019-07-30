@@ -24,9 +24,6 @@ class SecurityController extends AbstractController
 {
    /**
     *@Route("/register",name="register",methods={"POST"})
-    *@IsGranted("ROLE_SUPERUSER")
-    *@IsGranted("ROLE_PARTENAIRE")
-    *@IsGranted("ROLE_ADMIN")
     */
     public function register(Request $request,UserPasswordEncoderInterface $userPasswordEncoder,
     EntityManagerInterface $entityManager,SerializerInterface $serializer,ValidatorInterface $validator)
@@ -83,8 +80,6 @@ class SecurityController extends AbstractController
     }
     /**
      * @Route("/update/{id}",name="updateuser",methods={"PUT"})
-     * @IsGranted("ROLE_SUPERUSER")
-     * @IsGranted("ROLE_PARTENAIRE")
      */
 
 

@@ -25,8 +25,7 @@ class TransactionController extends AbstractController
 
     /**
      * @Route("/transaction", name="transaction")
-     * @IsGranted("ROLE_SUPERUSER")
-     * 
+     *  
      */
     public function trans(Request $request,SerializerInterface  $serializer ,
     ValidatorInterface $validator,SerializerInterface $Serializer, EntityManagerInterface $entityManager)

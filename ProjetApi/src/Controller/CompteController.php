@@ -22,7 +22,6 @@ class CompteController extends AbstractController
 {
     /**
      * @Route("/compte", name="compte",methods={"GET"})
-     * @IsGranted("ROLE_PARTENAIRE")
      */
     public function compte(Request $request,SerializerInterface $serializer,
     EntityManagerInterface $entityManager,ValidatorInterface $validator)
