@@ -14,9 +14,9 @@ class SecurityControllerTest extends WebTestCase
     // '{"nom":"warima","ninea":"125kxc","registrecommerce":"45Mads","adresse":"pikine","tel":775521478,"mail":"wari@gmail.com","numcompte":12450}');
     //     $rep=$client->getResponse();
     //      var_dump($rep);
-       
+
     //     $this->assertSame(201,$client->getResponse()->getStatusCode());
-        
+
     // }
     // public function testtrans(){
     //     $client=static::createClient();
@@ -40,16 +40,17 @@ class SecurityControllerTest extends WebTestCase
     // }
     public function testuser()
     {
-        $client=static::createClient();
-        $crawler=$client->request('POST','/api/register',[],[],
-        ['CONTENT-TYPE'=>"Application/json"],'{
+        $client = static::createClient([], ['PHP_AUTH_USER' => 'kadzo', 'PHP_AUTH_PW' => '1234']);
+        $crawler = $client->request('POST', '/api/register', [], [],
+            ['CONTENT-TYPE' => "Application/json"], '{
             "username":"laye","password":"1234","nom":"ly",
             "prenom":"yaya","adresse":"pikine","tel":"778521420",
             "matricule":"RJ45","status":"actif","email":"lyya@gmail.com",
             "partenaire_id":2
         }');
-        $rep=$client->getResponse();
+        $rep = $client->getResponse();
         var_dump($rep);
-        $this->assertSame(201,$client->getResponse()->getStatusCode());
-    } 
+        $this->assertSame(201, $client->getResponse()->getStatusCode());
+    }
+
 }

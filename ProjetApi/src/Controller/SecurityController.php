@@ -2,20 +2,16 @@
 
 namespace App\Controller;
 
-use App\Entity\Partenaire;
 use App\Entity\User;
 use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\Serializer\SerializerInterface;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
-use Doctrine\ORM\EntityManager;
 
 /**
  * @Route("/api")
@@ -23,48 +19,63 @@ use Doctrine\ORM\EntityManager;
 
 class SecurityController extends AbstractController
 {
-    /**
-     *@Route("/register",name="register",methods={"POST"})
-     */
-    public function register(Request $request, UserPasswordEncoderInterface $userPasswordEncoder,
-        EntityManagerInterface $entityManager, SerializerInterface $serializer, ValidatorInterface $validator) {
-        $values = json_decode($request->getContent());
-        if (isset($values->username, $values->password, $values->nom, $values->prenom, $values->adresse,
-            $values->tel, $values->matricule, $values->status, $values->email, $values->partenaire_id)) {
+    ///**
+    //  *@Route("/register",name="register",methods={"POST"})
+    //  */
+    // public function register(Request $request, UserPasswordEncoderInterface $userPasswordEncoder,
+    //     EntityManagerInterface $entityManager, SerializerInterface $serializer, ValidatorInterface $validator) {
+    //     $values = json_decode($request->getContent());
+    //     if (isset($values->username, $values->password, $values->nom, $values->prenom, $values->adresse,
+    //         $values->tel, $values->matricule, $values->status, $values->email, $values->partenaire_id)) {
 
-            $user = new User();
-            $user->setUsername($values->username);
-            $user->setPassword($userPasswordEncoder->encodePassword($user, $values->password));
-            $user->setRoles(["ROLE_ADMIN"]);
-            $user->setNom($values->nom);
-            $user->setPrenom($values->prenom);
-            $user->setAdresse($values->adresse);
-            $user->setTel($values->tel);
-            $user->setMatricule($values->matricule);
-            $user->setStatus($values->status);
-            $user->setEmail($values->email);
-            $part = $this->getDoctrine()->getRepository(Partenaire::class)->find($values->partenaire_id);
-            $user->setPartenaire($part);
-            $errors = $validator->validate($user);
-            if (count($errors)) {
-                $errors = $serializer->serialize($errors, 'json');
-                return new Response($errors, 500, ['Content-Type' => 'Application/json']);
-            }
+    //         $user = new User();
+    //         $user->setUsername($values->username);
+    //         $user->setPassword($userPasswordEncoder->encodePassword($user, $values->password));
+    //         $user->setRoles(["ROLE_ADMIN"]);
+    //         $user->setNom($values->nom);
+    //         $user->setPrenom($values->prenom);
+    //         $user->setAdresse($values->adresse);
+    //         $user->setTel($values->tel);
+    //         $user->setMatricule($values->matricule);
+    //         $user->setStatus($values->status);
+    //         $user->setEmail($values->email);
+    //         $part = $this->getDoctrine()->getRepository(Partenaire::class)->find($values->partenaire_id);
+    //         $user->setPartenaire($part);
+    //         $errors = $validator->validate($user);
+    //         if (count($errors)) {
+    //             $errors = $serializer->serialize($errors, 'json');
+    //             return new Response($errors, 500, ['Content-Type' => 'Application/json']);
+    //         }
 
-            $entityManager->persist($user);
-            $entityManager->flush();
+    //         $entityManager->persist($user);
+    //         $entityManager->flush();
 
-            $data = ['status' => 201, 'message' => 'l\'utilisateur a été crée'];
+    //         $data = ['status' => 201, 'message' => 'l\'utilisateur a été crée'];
 
-            return new JsonResponse($data, 201);
+    //         return new JsonResponse($data, 201);
 
-        }
-        $data = [
-            'status' => 500,
-            'messsage' => 'vous devez renseigner les cles username et password',
-        ];
-        return new JsonResponse($data, 500);
-    }
+    //     }
+    //     $data = [
+    //         'status' => 500,
+    //         'messsage' => 'vous devez renseigner les cles username et password',
+    //     ];
+    //     return new JsonResponse($data, 500);
+
+    // }
+
+    // /**
+    //  * @Route("/register", name="api_register", methods={"POST"})
+    //  */
+    // public function register(Request $request, UserPasswordEncoderInterface $userPasswordEncoder,
+    // EntityManagerInterface $entityManager, SerializerInterface $serializer, ValidatorInterface $validator)
+    // {
+    //     $user = new User();
+    //     $username                   = $request->request->get("username");
+    //     $password                   = $request->request->get("password");
+    //     $nom                        = $request->request->get("nom");
+
+    // }
+
     /**
      * @Route("/listuser",name="listuser",methods={"GET"})
      */
@@ -112,10 +123,9 @@ class SecurityController extends AbstractController
         ]);
     }
 
-
     // public function userBloquer(Request $request, UtilisateurRepository $userRepo,
     // EntityManagerInterface $entityManager):reponse{
-    
+
     //     $values = json_decode($request->getContent());
     //     $user=$userRepo->findOneByUsername($values->username);
     //     echo $user->getStatut();
