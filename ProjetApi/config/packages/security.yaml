@@ -19,21 +19,15 @@ security:
             stateless: true
             anonymous: true
             json_login:
-                check_path:     /api/login
-                success_handler: lexik_jwt_authentication.handler.authentication_success
-                failure_handler: lexik_jwt_authentication.handler.authentication_failure
-        # api:
-        #     pattern:    ^/api
-        #     stateless:  true
-                # check_path: /api/login_check
-                # success_handler:           lexik_jwt_authentication.handler.authentication_success
-                # failure_handler:           lexik_jwt_authentication.handler.authentication_failure
-        # api:
-        #     pattern:  ^/api
-        #     stateless: true
-        #     guard:
-        #         authenticators:
-        #             - lexik_jwt_authentication.jwt_token_authenticator
+                check_path: /api/login_check
+                success_handler:           lexik_jwt_authentication.handler.authentication_success
+                failure_handler:           lexik_jwt_authentication.handler.authentication_failure
+        api:
+            pattern:  ^/api
+            stateless: true
+            guard:
+                authenticators:
+                    - lexik_jwt_authentication.jwt_token_authenticator
 
 
             # activate different ways to authenticate
@@ -49,4 +43,4 @@ security:
         # - { path: ^/profile, roles: ROLE_USER }
         #- { path: ^/api/PARTENAIRE,roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/api/login,roles: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/api/t,roles: IS_AUTHENTICATED_FULLY }
+        - { path: ^/api,roles: IS_AUTHENTICATED_FULLY }
