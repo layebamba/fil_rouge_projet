@@ -16,6 +16,7 @@ return [
         '/api/login' => [[['_route' => 'login', '_controller' => 'App\\Controller\\SecurityController::login'], null, ['POST' => 0], null, false, false, null]],
         '/api/transaction' => [[['_route' => 'transaction', '_controller' => 'App\\Controller\\TransactionController::trans'], null, null, null, false, false, null]],
         '/api/listetrans' => [[['_route' => 'liste', '_controller' => 'App\\Controller\\TransactionController::listetrans'], null, ['GET' => 0], null, false, false, null]],
+        '/api/login_check' => [[['_route' => 'api_login_check'], null, null, null, false, false, null]],
     ],
     [ // $regexpList
         0 => '{^(?'

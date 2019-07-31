@@ -15,6 +15,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\Serializer\SerializerInterface;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
+use Doctrine\ORM\EntityManager;
 
 /**
  * @Route("/api")
@@ -109,5 +110,36 @@ class SecurityController extends AbstractController
             'username' => $user->getUsername(),
             'roles' => $user->getRoles(),
         ]);
+    }
+
+
+    public function userBloquer(Request $request, UtilisateurRepository $userRepo,EntityManagerInterface $entityManager):reponse{
+    
+        $values = json_decode($request->getContent());
+        $user=$userRepo->findOneByUsername($values->username);
+        echo $user->getStatut();
+        if ($user->getStatut()=="bloquer"){
+            if($user->getProfil()=="admin"){
+                $user->setRoles(["ROLE_ADMIN"]);
+            }
+            elseif($user->getProfil()=="admin"){
+                $user->setRoles(["ROLE_ADMIN"]);
+            }
+            elseif($user->getProfil()=="admin"){
+                $user->setRoles(["ROLE_ADMIN"]);
+            }
+            $user->setStatut("debloquer");
+        }
+        else{
+            $user->getProfil()=="admin"){
+            $user->setRoles(["ROLE_ADMIN"]);
+        }
+
+        $entityManager->setStatut("bloquer");
+        $data = [
+            'statut' => 200,
+            'message' => 'utilisateur bloque'
+        ];
+        return new JsonResponse($data);
     }
 }
