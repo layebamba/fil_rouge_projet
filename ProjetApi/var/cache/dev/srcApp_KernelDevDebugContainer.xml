@@ -2228,6 +2228,14 @@
         <argument>2048</argument>
       </call>
       <call method="addListener">
+        <argument>console.command</argument>
+        <argument type="collection">
+          <argument type="service" id="debug.debug_handlers_listener"/>
+          <argument>configure</argument>
+        </argument>
+        <argument>2048</argument>
+      </call>
+      <call method="addListener">
         <argument>kernel.exception</argument>
         <argument type="collection">
           <argument type="service" id="debug.debug_handlers_listener"/>
@@ -3228,7 +3236,7 @@
         <argument>null</argument>
       </call>
       <call method="add">
-        <argument type="service" id=".security.request_matcher.cRNYaJ1"/>
+        <argument type="service" id=".security.request_matcher.H6zgMH4"/>
         <argument type="collection">
           <argument>IS_AUTHENTICATED_FULLY</argument>
         </argument>
@@ -3673,8 +3681,8 @@
     <service id=".security.request_matcher.Ud1TEPV" class="Symfony\Component\HttpFoundation\RequestMatcher" public="false">
       <argument>^/api/login</argument>
     </service>
-    <service id=".security.request_matcher.cRNYaJ1" class="Symfony\Component\HttpFoundation\RequestMatcher" public="false">
-      <argument>^/api</argument>
+    <service id=".security.request_matcher.H6zgMH4" class="Symfony\Component\HttpFoundation\RequestMatcher" public="false">
+      <argument>^/api/t</argument>
     </service>
     <service id="security.command.user_password_encoder" class="Symfony\Bundle\SecurityBundle\Command\UserPasswordEncoderCommand" public="false">
       <tag name="console.command" command="security:encode-password"/>
@@ -5675,15 +5683,6 @@
         <argument key="validator" type="service" id="validator"/>
       </argument>
     </service>
-    <service id=".service_locator.cVd7JnS" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
-      <tag name="container.service_locator"/>
-      <argument type="collection">
-        <argument key="Serializer" type="service" id="serializer"/>
-        <argument key="entityManager" type="service" id="doctrine.orm.default_entity_manager"/>
-        <argument key="serializer" type="service" id="serializer"/>
-        <argument key="validator" type="service" id="validator"/>
-      </argument>
-    </service>
     <service id=".service_locator.k6pF5Cm" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
@@ -5691,7 +5690,7 @@
         <argument key="transactionRepository" type="service" id="App\Repository\TransactionRepository"/>
       </argument>
     </service>
-    <service id=".service_locator.ikabASd" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id=".service_locator.okRELkl" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="App\Controller\CompteController::compte" type="service" id=".service_locator.7zWnKy7"/>
@@ -5701,7 +5700,7 @@
         <argument key="App\Controller\SecurityController::register" type="service" id=".service_locator.cwII1To"/>
         <argument key="App\Controller\SecurityController::update" type="service" id=".service_locator.sFS5.mG"/>
         <argument key="App\Controller\TransactionController::listetrans" type="service" id=".service_locator.k6pF5Cm"/>
-        <argument key="App\Controller\TransactionController::trans" type="service" id=".service_locator.cVd7JnS"/>
+        <argument key="App\Controller\TransactionController::trans" type="service" id=".service_locator.7zWnKy7"/>
         <argument key="App\Controller\CompteController:compte" type="service" id=".service_locator.7zWnKy7"/>
         <argument key="App\Controller\PartenaireController:listpart" type="service" id=".service_locator.eIEYWuf"/>
         <argument key="App\Controller\PartenaireController:new" type="service" id=".service_locator.k22NER8"/>
@@ -5709,7 +5708,7 @@
         <argument key="App\Controller\SecurityController:register" type="service" id=".service_locator.cwII1To"/>
         <argument key="App\Controller\SecurityController:update" type="service" id=".service_locator.sFS5.mG"/>
         <argument key="App\Controller\TransactionController:listetrans" type="service" id=".service_locator.k6pF5Cm"/>
-        <argument key="App\Controller\TransactionController:trans" type="service" id=".service_locator.cVd7JnS"/>
+        <argument key="App\Controller\TransactionController:trans" type="service" id=".service_locator.7zWnKy7"/>
       </argument>
     </service>
     <service id=".service_locator.LtnrEkg" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
@@ -6043,12 +6042,12 @@
       <argument type="service" id="security.token_storage"/>
     </service>
     <service id="debug.argument_resolver.service.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver" public="false">
-      <argument type="service" id=".service_locator.ikabASd"/>
+      <argument type="service" id=".service_locator.okRELkl"/>
     </service>
     <service id="debug.argument_resolver.default.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver" public="false"/>
     <service id="debug.argument_resolver.variadic.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\VariadicValueResolver" public="false"/>
     <service id="debug.argument_resolver.not_tagged_controller.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\NotTaggedControllerValueResolver" public="false">
-      <argument type="service" id=".service_locator.ikabASd"/>
+      <argument type="service" id=".service_locator.okRELkl"/>
     </service>
     <service id="api_platform.swagger.normalizer.api_gateway.inner" class="ApiPlatform\Core\Swagger\Serializer\DocumentationNormalizer" public="false">
       <argument type="service" id="api_platform.metadata.resource.metadata_factory.cached"/>
@@ -6410,7 +6409,7 @@
     <service id="EasyCorp\Bundle\EasyAdminBundle\Search\Paginator" alias="easyadmin.paginator"/>
     <service id="EasyCorp\Bundle\EasyAdminBundle\Search\Autocomplete" alias="easyadmin.autocomplete"/>
     <service id="EasyCorp\Bundle\EasyAdminBundle\Form\Filter\FilterRegistry" alias="easyadmin.filter.registry" public="true"/>
-    <service id="argument_resolver.controller_locator" alias=".service_locator.ikabASd"/>
+    <service id="argument_resolver.controller_locator" alias=".service_locator.okRELkl"/>
     <service id="twig.loader.filesystem" alias="twig.loader.native_filesystem" public="false"/>
     <service id="twig.loader" alias="twig.loader.native_filesystem"/>
     <service id="api_platform.name_converter" alias="serializer.name_converter.metadata_aware"/>

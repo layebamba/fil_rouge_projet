@@ -13,7 +13,7 @@ return [
         '/api/listpart' => [[['_route' => 'listparte', '_controller' => 'App\\Controller\\PartenaireController::listpart'], null, ['GET' => 0], null, false, false, null]],
         '/api/register' => [[['_route' => 'register', '_controller' => 'App\\Controller\\SecurityController::register'], null, ['POST' => 0], null, false, false, null]],
         '/api/listuser' => [[['_route' => 'listuser', '_controller' => 'App\\Controller\\SecurityController::listuser'], null, ['GET' => 0], null, false, false, null]],
-        '/api/login' => [[['_route' => 'login', '_controller' => 'App\\Controller\\SecurityController::login'], null, ['GET' => 0], null, false, false, null]],
+        '/api/login' => [[['_route' => 'login', '_controller' => 'App\\Controller\\SecurityController::login'], null, ['POST' => 0], null, false, false, null]],
         '/api/transaction' => [[['_route' => 'transaction', '_controller' => 'App\\Controller\\TransactionController::trans'], null, null, null, false, false, null]],
         '/api/listetrans' => [[['_route' => 'liste', '_controller' => 'App\\Controller\\TransactionController::listetrans'], null, ['GET' => 0], null, false, false, null]],
         '/admin' => [[['_route' => 'easyadmin', '_controller' => 'EasyCorp\\Bundle\\EasyAdminBundle\\Controller\\AdminController::indexAction'], null, null, null, true, false, null]],

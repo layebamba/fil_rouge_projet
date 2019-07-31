@@ -17,7 +17,6 @@ security:
         login:
             pattern: ^/api/login
             stateless: true
-        # main:
             anonymous: true
             json_login:
                 check_path:     /api/login
@@ -26,6 +25,12 @@ security:
         # api:
         #     pattern:    ^/api
         #     stateless:  true
+                # check_path: /api/login_check
+                # success_handler:           lexik_jwt_authentication.handler.authentication_success
+                # failure_handler:           lexik_jwt_authentication.handler.authentication_failure
+        # api:
+        #     pattern:  ^/api
+        #     stateless: true
         #     guard:
         #         authenticators:
         #             - lexik_jwt_authentication.jwt_token_authenticator
@@ -44,4 +49,4 @@ security:
         # - { path: ^/profile, roles: ROLE_USER }
         #- { path: ^/api/PARTENAIRE,roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/api/login,roles: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/api,roles: IS_AUTHENTICATED_FULLY }
+        - { path: ^/api/t,roles: IS_AUTHENTICATED_FULLY }
